@@ -42,6 +42,7 @@
     {% endif %}
     <tr>
         <td>Picture</td>
+        <td>Owner name</td>
         <td>Center Id</td>
         <td>Center Name</td>
         <td>Center mobile</td>
@@ -57,6 +58,7 @@
         <form action="{% url 'centeradminupdate' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
         <td><img src="{{centmangr.center_photo}}" height="50px" width="50px"></td>
+        <td><input type="text" value="{{centmangr.owner_name}}"  name="adowner_name"></td>
         <td><input type="text" value="{{centmangr.center_id}}" disabled name="center_id"></td>
         <input type="text" value="{{centmangr.center_id}}" hidden name="center_id">
         <td><input type="text" value="{{centmangr.center_name}}" name="center_name"></td>

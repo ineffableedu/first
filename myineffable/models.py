@@ -13,6 +13,7 @@ class CentreRegisterAdmin(models.Model):
      center_email=models.CharField(max_length=500, null = True , blank = True)
      centerdatetime=models.CharField(max_length=500, null = True , blank = True)
      center_password=models.CharField(max_length=500, null = True , blank = True)
+     owner_name=models.CharField(max_length=500, null = True , blank = True)
 
 
 
@@ -45,3 +46,5 @@ class CentreRegisterStudent(models.Model):
      centeruserid=models.CharField(max_length=255)
      status=models.CharField(max_length=255)
      upload_result=models.CharField(max_length=255,null=True,blank=True)
+     studentdatetime=models.CharField(max_length=500, null = True , blank = True)
+

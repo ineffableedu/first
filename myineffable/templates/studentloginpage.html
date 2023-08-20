@@ -15,25 +15,26 @@
 <style>
     
     table, th, td {
-      border:1px solid black;
+      border:0px solid black;
       text-align: center;
       color: black;
       background-color: white;
     }
+
     #mainbody{
-      height: 505px;
-      width: 700px;
+      height: 530px;
+      width: 740px;
       border: 0px solid;
       color: black;
       background-color: rgb(240, 231, 231);
     }
    #one{
       height: 400px;
-      width: 350px;
+      width: 470px;
       border: 0px solid;
       color: black;
       float: left;
-      margin-left: 50px;
+      /* margin-left: 20px; */
 
    }
    #two{
@@ -43,6 +44,28 @@
       color: black;
       float: left;
       margin-top: 76px;
+   }
+   #three{
+    border:0px solid black;
+    height: 60px;
+    width: 150px;
+    float: left;
+    margin-top: 5px;
+    text-align: right;
+   }
+   h2{
+    width:100%;
+   }
+   #three1
+   {
+    border: 0px solid black;
+    height: 60px;
+    width: 300px;
+    float: right;
+    margin-top: 5px;
+    padding: 5px;
+    text-align: left;
+
    }
     </style>
   </head>
@@ -58,61 +81,46 @@
     {% if  msg %}
 <h3 align="center">{{msg}}</h3>
     {% endif %}
-    <!-- <tr>
-        <td>Picture</td>
-        <td>Student Name</td>
-        <td>Student RollNo</td>
-        <td>DOB</td>
-        <td>Download Result</td>
-    </tr> -->
+    
 {% for jb in jbh %}
 {% if jb.status == "Accept" %}
 
-    <!-- <tr> -->
-        <!-- <td><img src="{{jb.image}}" height="50px" width="50px"></td>
-        <td>{{jb.student_name}}</td>
-        <td>{{jb.rollno}}</td>
-        <td>{{jb.Dob}}</td>
-        <td>
-        <a href="{{jb.upload_result}}">Show Diploma Result</a>        
-        </td> -->
- 
-
-    <!-- </tr> -->
   
     <div id="mainbody">
+      <div id="two">
+        <img src="{{jb.image}}" style="border: 1px solid;margin-top: 50px; height: 300;width: 220px;">
+      </div>
       <div id="one">
+        
         <!-- <tr><td>Name</td><td>{{jb.student_name}}</td></tr> -->
         <h2 style="float: left;margin-top: 30px;">Student Details</h2>
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Roll Number</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{jb.rollno}}</b></div>
+        <div id="three">Roll Number</div>
+        <div id="three1" ><b>{{jb.rollno}}</b></div>
 
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Student Name</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{jb.student_name}}</b></div>
+        <div id="three" >Student Name</div>
+        <div id="three1"><b>{{jb.student_name}}</b></div>
         
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Course Name</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{jb.course_name}}</b></div>
+        <div id="three" >Course Name</div>
+        <div id="three1" ><b>{{jb.course_name}}</b></div>
         
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Course Duration</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{jb.duration}}</b></div>
+        <div id="three" >Course Duration</div>
+        <div id="three1" ><b>{{jb.duration}}</b></div>
         
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Training Center Name</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>Strugle Computer Institute</b></div>
+        <div id="three" >Training Center Name</div>
+        <div id="three1" ><b>Strugle Computer Institute</b></div>
         
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Training Center Address</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>Laxmanpur Surahi Dist. Ballia, Uttar Pradesh</b></div>
+        <div id="three" >Training Center Address</div>
+        <div id="three1" ><b>Laxmanpur Surahi Dist. Ballia, Uttar Pradesh</b></div>
 
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">
+        <div id="three" >
           {% if jb.upload_result != Null %}
           <a href="{{jb.upload_result}}">Show Diploma Result</a>
           {% endif %}
         </div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b><a href="{% url 'downloadresult' id=jb.rollno %}">Download marksheet  &#9729;</a></b></div>
+        <div id="three1" ><b><a href="{% url 'downloadresult' id=jb.rollno %}">Download marksheet  &#9729;</a></b></div>
         
       </div>
-      <div id="two">
-        <img src="{{jb.image}}" style="border: 1px solid;margin-top: 50px; height: 300;width: 220px;">
-      </div>
+
     
     </div>
     {% endif %}

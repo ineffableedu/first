@@ -33,6 +33,12 @@
     {% endif %}
     <form action="{% url 'admin_centerregistration' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
+      <tr>
+                
+        <td>Owner Name</td>
+        <td><input type="text" name="owner_name" placeholder="Owner name"></td>
+
+    </tr>
             <tr>
                 
                 <td>Center Id</td>

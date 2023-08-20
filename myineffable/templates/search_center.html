@@ -15,26 +15,26 @@
 <style>
     
     table, th, td {
-      border:1px solid black;
+      border:0px solid black;
       text-align: center;
       color: black;
       background-color: white;
     }
 
     #mainbody{
-      height: 505px;
-      width: 700px;
+      height: 510px;
+      width: 740px;
       border: 0px solid;
       color: black;
       background-color: rgb(240, 231, 231);
     }
    #one{
       height: 400px;
-      width: 350px;
+      width: 470px;
       border: 0px solid;
       color: black;
       float: left;
-      margin-left: 50px;
+      /* margin-left: 20px; */
 
    }
    #two{
@@ -45,12 +45,34 @@
       float: left;
       margin-top: 76px;
    }
+   #three{
+    border: 0px solid black;
+    height: 60px;
+    width: 150px;
+    float: left;
+    margin-top: 5px;
+    text-align: right;
+   }
+   h2{
+    width:100%;
+   }
+   #three1
+   {
+    border: 0px solid black;
+    height: 60px;
+    width: 300px;
+    float: right;
+    margin-top: 5px;
+    padding: 5px;
+    text-align: left;
+
+   }
     </style>
   </head>
   <body style="background-color:skyblue;margin:0px auto; color: white;">
     <center>
     <table border="" align="center"  width="100%">
-    <h1>Search Center</h1>
+    <h1 >Search Center</h1>
     <form action="{% url 'Searchcenterid' %}" method="post">
       {% csrf_token %}
   <h4><input type="text" name="searchcenterid" placeholder="Center ID..."><input type="submit" value="Search"></h4>
@@ -58,51 +80,53 @@
     {% if  msg %}
 <h3 align="center">{{msg}}</h3>
     {% endif %}
-    <!-- <tr>
-        <td>Picture</td>
-        <td>Center Id</td>
-        <td>Center Name</td>
-        <td>Center Address</td>
-        <td>Center Mobile</td>
-    </tr> -->
+ 
 {% for Centerregistr in Centerregister %}
-    <!-- <tr>
-        <td><img src="{{Centerregistr.center_photo}}" height="50px" width="50px"></td>
-        <td>{{Centerregistr.center_id}}</td>
-        <td>{{Centerregistr.center_name}}</td>
-        <td>{{Centerregistr.center_address}}</td>
-        <td>{{Centerregistr.center_mobile}}</td>
-    </tr> -->
+    
     <div id="mainbody">
+      <div id="two">
+        <img src="{{Centerregistr.center_photo}}" style="border: 0px solid;margin-top: 50px; height: 300;width: 220px;">
+      </div>
       <div id="one">
-        <!-- <tr><td>Name</td><td>{{jb.student_name}}</td></tr> -->
-        <h2 style="float: left;margin-top: 30px;">Center Details</h2>
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Center Id</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{Centerregistr.center_id}}</b></div>
-
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Center Name</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{Centerregistr.center_name}}</b></div>
         
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Center Mobile</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{Centerregistr.center_mobile}}</b></div>
+        <!-- <tr><td>Name</td><td>{{jb.student_name}}</td></tr> -->
+        <h2 style="border:0px solid;float: left;text-align: center; margin-top: 30px;">Center Details</h2>
+        <br/>
+        <div id="three" >Owner Name</div>
+        <div id="three1" ><b>{{Centerregistr.owner_name}}</b></div>
+        <br/>
+
+        <div id="three">Center Id</div>
+        <div id="three1" ><b>{{Centerregistr.center_id}}</b></div>
+        <br/>
+
+        <div id="three" >Center Name</div>
+        <div id="three1" ><b>{{Centerregistr.center_name}}</b></div>
+        <br/>
+        
+        <div id="three" >Owner Mobile No.</div>
+        <div id="three1" ><b>{{Centerregistr.center_mobile}}</b></div>
         
         <!-- <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Center </div>
         <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>Strugle Computer Institute</b></div>
          -->
+         <br/>
 
-         <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Center Address</div>
-         <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{Centerregistr.center_address}}</b></div>
+         <div id="three" >Centerr Email</div>
+         <div id="three1" ><b>{{Centerregistr.center_email}}</b></div>
+
+         <br>
+         <br>
+         <br>
+         
+         <div id="three" >Center Address</div>
+         <div id="three1" ><b><p>{{Centerregistr.center_address}}</p></b></div>
  
-
-        <div id="three" style="border: 0px solid;float: left;padding: 8px; height: 60px;width:150px;">Centerr Email</div>
-        <div id="three" style="border: 0px solid;float: right; padding: 8px; height: 60px;width:200px;"><b>{{Centerregistr.center_email}}</b></div>
         
         
 
       </div>
-      <div id="two">
-        <img src="{{Centerregistr.center_photo}}" style="border: 1px solid;margin-top: 50px; height: 300;width: 220px;">
-      </div>
+      
     
     </div>
 {% endfor %}

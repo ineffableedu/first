@@ -54,6 +54,7 @@ def admindashboard(request):
 def admin_centerregistration(request):
     try:
         if request.session['adminid']:
+            owner_name=request.POST['owner_name']
             center_email=request.POST['center_email']
             center_mobile=request.POST['center_mobile']
             center_id=request.POST['center_id']
@@ -85,6 +86,7 @@ def admin_centerregistration(request):
                         center_email=center_email,
                         centerdatetime=datetime.datetime.today(),
                         center_photo=center_photo,
+                        owner_name=owner_name,
                         center_password=12345678
                     )
                     c_a_c.save()
@@ -210,6 +212,7 @@ def create_centre_form(request):
     crs.assignment_mark=request.POST.get("txtassignment_marks",0)
     crs.viva_mark=request.POST.get("txtviva_marks",0)
     crs.status="Reject"
+    crs.studentdatetime=datetime.datetime.today()
     crs.save()
     messages.info(request,'Student register succussfully')
     return redirect('centerdashboard')
@@ -218,7 +221,7 @@ def create_centre_form(request):
 def adminstudentstatus(request):
     try:
         if request.session['adminid']:
-            stdstall=CentreRegisterStudent.objects.all()
+            stdstall=CentreRegisterStudent.objects.all().order_by('-studentdatetime')
             return render(request,"adminstudentstatus.html",{'stdstall':stdstall})
         else:
             HttpResponse("You are not authorized!")
@@ -255,7 +258,7 @@ def adminstudentactionreject(request,id):
 
 
 def  admincentermanage(request):
-    centmangreg=CentreRegisterAdmin.objects.all()
+    centmangreg=CentreRegisterAdmin.objects.all().order_by('-centerdatetime')
     return render(request,"admincentermanage.html",{'centmangreg':centmangreg})
 
 def centeradminupdate(request):
@@ -265,6 +268,7 @@ def centeradminupdate(request):
     center_name=request.POST['center_name'],
     center_address=request.POST['center_address'],
     center_password=request.POST['center_password'],
+    adowner_name=request.POST['adowner_name'],
     # print(center_email,center_mobile,center_id,center_name,center_address)
     msg=''
     try:
@@ -278,6 +282,7 @@ def centeradminupdate(request):
                 ghh.center_mobile=center_mobile
                 ghh.center_email=center_email
                 ghh.center_password=center_password[0]
+                ghh.owner_name=adowner_name[0]
                 print("2"*8)
                 ghh.save()
                 messages.info(request,'Center Updated succussfully')
@@ -292,7 +297,7 @@ def centeradminupdate(request):
 def centerupdatestudent(request):
     centeruser=request.session['centeruser']
     # print(centersturollno)
-    udsthnt=CentreRegisterStudent.objects.filter(centeruserid=centeruser)
+    udsthnt=CentreRegisterStudent.objects.filter(centeruserid=centeruser).order_by('-studentdatetime')
     return render(request,"centerupdatestudent.html",{'udsthnt':udsthnt})
 
 def studentcenterupdate(request):
@@ -517,7 +522,7 @@ def downloadresult(request,id):
     logopic=r'myineffable/logo.jpeg'
     c.drawImage(logopic,0.1*inch,10.3*inch,width=100, height=70)
     #logo path need
-    c.drawImage('myineffable/qr_code.jpeg',6.2*inch,10.3*inch,width=70, height=70)
+    c.drawImage('myineffable/new_qr_code.jpeg',6.2*inch,10.3*inch,width=70, height=70)
     c.setFont("Helvetica-Bold",30)
     c.drawString(.2*inch,9.8*inch,'INEFFABLE GROUP OF INSTITUTION')
     c.setFont("Helvetica",10)
