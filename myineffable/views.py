@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,reverse
 from django.core.exceptions import ObjectDoesNotExist
 from .models import CentreRegisterAdmin,CentreRegisterStudent
 # Create your views here.
@@ -10,6 +10,18 @@ from django.contrib import messages
 
 def index(request):
     return render(request,"index.html")
+
+def about(request):
+    return render(request,"about.html")
+
+def notice(request):
+    return render(request,"notice.html")
+
+def course(request):
+    return render(request,"course.html")
+
+def contact(request):
+    return render(request,"contact.html")
     
 def adminlogin(request):
     return render(request,"adminlogin.html")

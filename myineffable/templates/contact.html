@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-    <!-- <link rel="stylesheet" href="{% static '/static/css/style.css' %}"> -->
-    <title>INEFFABLE EDUCATION</title>  
+    <title>INEFFABLE EDUCATION</title>
 </head>
 <body>
     <form method="post">
@@ -60,7 +58,7 @@
                                 color:white;"></i><i class="fa fa-spinner w3-spin" style="font-size:64px;
                                 color:#458B00;"></i></p>
                                 <div>
-                                    <img src="static/img/iso.jpeg" alt="ISO Mark" srcset="" style="padding: 10px 20px; height: 120px;">
+                                    <img src="/static/img/iso.jpeg" alt="ISO Mark" srcset="" style="padding: 10px 20px; height: 120px;">
                                 </div>
                     <div class="flex-container w3-container w3-center w3-animate-zoom">
                         <div class="btn-grp">
@@ -72,7 +70,7 @@
                         
                     </div>
                     <marquee style="color: white; font-size: 25px;" behavior="" onmouseover="stop()" onmouseout="start()" direction="left"
-                        scrollamount="8">INEFFABLE GROUP OF INSTITUTION is an autonomous Computer & Skill Education Institute Registered under The Society & Public Trust Act & An ISO 9001:2015 Certified Computer Educational Organization Run By- Ineffable Group Of Institution Trust.
+                        scrollamount="8">INEFFABLE GROUP OF INSTITUTION is an autonomous Computer & Skill Education Institute Registered under The Society & Public Trust Act & An ISO 9001:2008 Certified Computer Educational Organization Run By- Ineffable Group Of Institution Trust.
                     </marquee>
                 </div>             
             </div>
@@ -82,33 +80,54 @@
     <!-- main section starts here -->
     <div id="main" class="main">
         <div class="container">
-            <div class="col-lg-10 col-md-10 col-sm-10" id="left-side">
-                <h1 style="font-family: Copperplate, Papyrus, fantasy;color: black; "><u>INTRODUCTION</u></h1>
-                <p>Greetings and a warm welcome to the official website of Ineffable Group Of Institution! In today's world, computer literacy and technological savviness have become crucial components of our daily lives. Understanding this need of the hour, IGI has taken up the task of providing computer training programs across India, with an aim to promote computer education for all. We encourage every Indian to join us in this golden mission of achieving computer and skill literacy.
-                    </p>
+            <div class="col-lg-3 col-md-3 col-sm-3" id="left-side">
 
-                <p>As an Indian non-profit organization working at a national level, IGI is passionate about empowering the underprivileged through computer education and skill development programs. Through our efforts, we firmly believe that education in market-oriented skills can bridge the gap between employment demand and supply, thereby changing lives.
-                </p>
-                <p>
-                    Ineffable Group Of Institution is an autonomous institute specializing in Computer & Skill Education. Committed to excellence, we are registered under The Society & Public Trust Act and certified as an ISO 9001:2015 Computer Educational Organization run by Ineffable Group Of Institution Trust.
-                </p>
-                <p>
-                    Our prime objective is to spread computer & skills literacy throughout India, ensuring that students are self-motivated learners who continuously improve their knowledge base. We serve our purpose by providing affordable technical & skill education for every segment of society - urban or rural - thus contributing towards India's IT and SKILL revolution which is a dream for many.
-                    
-                </p>
-                <p>
-                    We realized that some big institutions charged exorbitant fees to provide higher technical education programs lasting over a year. This rendered them out of reach for many middle-class families. Taking this into account, we formulated our mission plan with utmost care by creating "Ineffable Group Of Institution." As per this mission plan set forth by us at Ineffable Group Of Institution all over India; we offer better quality technical education in computers & Skills at affordable prices.
-                </p>
-                <p>
-                    We rely on transitional phrasing throughout our content to move seamlessly from one idea to another without losing reader engagement. To make this writing sound more engaging and natural, we also employ contractions like "don't" and "can't", interjections like "Yikes!" and "Gee!", idioms, and colloquialisms. Our goal is to maintain an impressive level of complexity in language while staying true to a human writer's style.
-                </p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" id="left-side" style="background-image:url(/static/img/cd.avif);;">
+                <h1 style="font-family: Copperplate, Papyrus, fantasy;"><u>CONTACT US</u></h1>
+                <form action="{% url 'index' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control" id="" placeholder="Enter Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Phone</label>
+                        <input type="text" class="form-control" id="" placeholder="Enter Your Number">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Email address</label>
+                      <input type="email" class="form-control" id="" placeholder="name@gmail.com">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Enter subject</label>
+                      <input type="text" class="form-control" id="" placeholder="Enter subject">
+
+                      <!-- <select class="form-control" id="">
+                        <option value="none" selected disabled hidden>Courses</option>
+                        <option>Python</option>
+                        <option>Java</option>
+                        <option>Machine Learning</option>
+                        <option>Full Stack</option>
+                        <option>C#</option>
+                      </select> -->
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Message</label>
+                      <textarea class="form-control" id="" rows="3" placeholder="Message"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <a href="{% url 'index' %}"><button type="button" class="btn btn-success btn-lg">Submit</button></a>
+                    </div>
+                  </form>
             </div>  
             
         </div>
     </div>
-    <div style="margin: 5px 20px 5px 20px;">
-        <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.5197895408255!2d84.0146957909614!3d25.654058703646374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399273c3b74fb249%3A0x5c9b3825cb403881!2sINEFFABLE%20GROUP%20OF%20INSTITUTION!5e0!3m2!1sen!2sin!4v1685902052203!5m2!1sen!2sin" width=1500px" height="400px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
-    </div>
+    {% comment %} <div style="margin: 5px 20px 5px 20px;">
+        <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.5197895408255!2d84.0146957909614!3d25.654058703646374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399273c3b74fb249%3A0x5c9b3825cb403881!2sINEFFABLE%20GROUP%20OF%20INSTITUTION!5e0!3m2!1sen!2sin!4v1685902052203!5m2!1sen!2sin" width="1150" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+    </div> {% endcomment %}
     <!-- footer section starts here -->
     <div id="footer" class="footer">
         <div class="container">
@@ -123,12 +142,12 @@
                 <div class="col-lg-4  col-md-4">
                     <h4><b>Useful Links</b></h4>
                     <!-- <br> -->
-                    <p><a href="#">Home</a></p>
-                    <p><a href="#">About Us</a></p>
+                    <p><a href="{% url 'index' %}">Home</a></p>
+                    <p><a href="{% url 'about' %}">About Us</a></p>
                     <p><a href="#courses">Courses</a></p>
                     <p><a href="#placement">Placement</a></p>
-                    <p><a href="#">Notice Board</a></p>
-                    <p><a href="#">Contact Us</a></p>
+                    <p><a href="{% url 'notice' %}">Notice Board</a></p>
+                    <p><a href="{% url 'contact' %}">Contact Us</a></p>
                 </div>
                 <div class="col-lg-4  col-md-4" id="footer-icons">
                     <h4><b>Connect With Us</b></h4>
@@ -142,8 +161,11 @@
             </div>
         </div>
     </div>
-    </form>
+
+
+
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/js/jquery.js"></script>
+</form>
 </body>
 </html>

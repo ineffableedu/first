@@ -29,6 +29,10 @@ urlpatterns=[
     url(r'^admincentersearch',views.admincentersearch,name='admincentersearch'),
     url(r'^centerstudentsearch',views.centerstudentsearch,name='centerstudentsearch'),
     url(r'^downloadresult/(?P<id>\d+)$',views.downloadresult,name='downloadresult'),
+    url(r'^about',views.about,name='about'),
+    url(r'^notice',views.notice,name='notice'),
+    url(r'^contact',views.contact,name='contact'),
+    url(r'^course',views.course,name='course'),
 
 
 
