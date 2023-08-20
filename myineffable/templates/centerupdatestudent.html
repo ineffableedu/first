@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+{% load static %}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Admin</title>
+    
+<style>
+    
+    table, th, td {
+      border:1px solid black;
+      text-align: center;
+      color: black;
+      background-color: white;
+    }
+    table, th, td input {
+      border: none;
+      text-align: center;
+      height:100%;
+      width:100%;
+    }
+
+    </style>
+  </head>
+  <body style="background-color:skyblue;margin:0px auto; color: white;">
+    <center>
+    <table border="" align="center"  width="100%">
+    <h1>Student status</h1>
+    <form action="{% url 'centerstudentsearch' %}" method="post">
+      {% csrf_token %}
+  <h5><input type="text" name="centersturollno" placeholder="Student RollNo..."><input type="submit" value="Search"></h5>
+  </form>
+    {% if  msg %}
+<h3 align="center">{{msg}}</h3>
+    {% endif %}
+    <tr>
+        <td>Image</td>
+        <td>Student RollNo.</td>
+        <td>Student Name</td>
+        <td>Student Mother</td>
+        <td>Student Father</td>
+        <td>Student session</td>
+        <td>Student Dob</td>
+        <td>Upload Result</td>
+        <td>Action</td>
+        <!-- <td>Center Mobile</td> -->
+    </tr>
+{% for udsthn in udsthnt %}
+
+    <tr>
+        <form action="{% url 'studentcenterupdate' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <td><img src="{{udsthn.image}}" height="50px" width="50px"></td>
+        <td><input type="text" value="{{udsthn.rollno}}" disabled name="rollno"></td>
+        <td><input type="text" value="{{udsthn.student_name}}"  name="student_name"></td>
+        <input type="text" hidden name="stid" value="{{udsthn.rollno}}">
+        <td><input type="text" value="{{udsthn.mother_name}}" name="mother_name"></td>
+        <td><input type="text" value="{{udsthn.father_name}}" name="father_name"></td>
+        <td><input type="text" value="{{udsthn.session}}" name="session"></td>
+        <td><input type="text" value="{{udsthn.Dob}}" name="Dob"></td>
+        <td><input type="file"  name="upload_result">
+        {% if udsthn.upload_result %}
+update result
+        {% endif %}
+        </td>
+        <td><input type="submit" name="" value="Update"></td>
+    </form>
+    </tr>
+{% endfor %}
+</table>
+</center>
+  </body>
+</html>

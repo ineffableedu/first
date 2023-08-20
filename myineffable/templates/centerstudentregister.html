@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+{% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Center</title>
+    <style>
+        table ,tr, td {
+            padding: 10px;
+            /* width: 300px; */
+            /* text-align: center;
+            margin: 0px auto; */
+
+        }
+    </style>
+  </head>
+  <body style="background-color:skyblue;margin:0px auto; color: white;">
+    <table border="3" align="center">
+    <form method="POST" action="{% url 'create_centre_form' %}" enctype="multipart/form-data">
+      {% csrf_token %} 
+
+
+
+
+          <h2 style="text-align: center;"><b>STUDENT REGISTRATION</b></h2>
+                 <tr>
+            <td>
+                <label for="" class="form-label">Student's Name</label>
+                <input type="text" class="form-control" aria-label="Student_name" name="txtstudentname" value="{{crs.student_name}}">
+        </td>
+        <td>
+                <label for="" class="form-label">Mother's Name</label>
+                <input type="text" class="form-control" aria-label="Mother_name" name="txtmothername" value="{{crs.mother_name}}">
+        </td>
+        <td>
+                <label for="" class="form-label">Father's Name</label>
+                <input type="text" class="form-control" aria-label="Father_name" value="" name="txtfathername">
+        </td>
+        </tr><br>
+        <tr>
+          {% if rollno %}
+                  <td>
+                    <label for="" class="form-label">RollNo</label>
+                  <input type="text" class="form-control"  aria-label="RollNo" value="{{rollno}}" disabled name="">
+                  <input type="text" class="form-control"  aria-label="RollNo" value="{{rollno}}" hidden name="txtrollno">
+                </td>
+                {% endif %}
+                <td>
+                  <label for="" class="form-label">Student Photo</label>
+                  <input type="file" class="form-control" value="{{crs.photo}}"  aria-label="Photo" name="txtphoto">
+                </td>
+                <td>
+                  <label for="" class="form-label">DOB</label>
+                  <input type="date" placeholder="YYYY-MM-DD" value="{{crs.Dob}}" class="form-control" name="txtdob">
+                </td>
+            </tr><br>
+            <tr>
+                <!-- <td>
+                  <label for="" class="form-label">Center Name</label>
+                  <input type="text" class="form-control"  aria-label="Center" value="{{crs.centre_name}}" name="txtcenter">
+                </td> -->
+                <td>
+                  <label for="" class="form-label">Session</label>
+                  <input type="text" name="txtsession">
+                
+                </td>
+                <td>
+                  <label for="" class="form-label">Course Name</label>
+                  <input type="text" name="txtcourse">
+                  <!-- <select class="form-control" name="txtcourse" value="{{crs.course_name}}">
+                    <option value="none" selected disabled hidden>Select</option>
+                    <option>Advance DCA</option>
+                    <option>Diploma in Computer Applications</option>
+                    <option>Machine Learning</option>
+                    <option>Data Science</option>
+                  </select> -->
+                </td>
+                <td>
+                  <label for="" class="form-label">Duration</label>
+                  <input type="text" class="form-control"  value=""  aria-label="Duration" name="txtduration">
+                </td>
+            </tr><br>
+            <tr>
+                <td>  <label for="" class="form-label">Examination Held on:</label>
+                  <input type="date" class="form-control"  placeholder="yyyy-mm-dd"  value="{{crs.examheldon}}" aria-label="Exam" name="txtexam">
+                </td>
+                <!-- <td>
+                  <label for="" class="form-label">Percentage</label>
+              
+                  <input type="text" class="form-control"  id="inputper" value="00" name="txtper" >
+                </td> -->
+                <td>
+                  <label for="" class="form-label">Grade</label>
+                  <select class="form-control" value="{{crs.grade}}" name="txtgrade" >
+                    <option value="none" selected disabled hidden>Select</option>
+                    <option>A+</option>
+                    <option>A</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>F</option>
+                    <option>AB</option>
+                  </select>
+                </td>
+                <td>
+                  <label for="" class="form-label">Date of Issue</label>
+                  <input type="date" placeholder="YYYY-MM-DD" value="{{crs.dateofissue}}" class="form-control"  aria-label="issue" name="txtissue">
+                </td>
+                
+                </tr>
+                <tr>
+                    
+                
+                <td>
+
+                  <label for="" class="form-label">Remarks</label>
+                  <select class="form-control" name="txtremark" value="{{crs.remark}}">
+                    <option value="none" selected disabled hidden>Select</option>
+                    <option>Pass</option>
+                    <option>Fail</option>
+                    <option>Ab</option>
+                  </select>
+                </td>
+                
+                <!-- <td>
+                  <label for="" class="form-label">Written_Marks_obtained</label>
+                  <input type="text" class="form-control"  value="00"  aria-label="marks" name="txtwritten_marks">
+                </td>
+                <td>
+                  <label for="" class="form-label">Practical_Marks_obtained</label>
+                  <input type="text" class="form-control" value="00"  aria-label="prac" name="txtprac_marks">
+                </td> -->
+               
+                </tr><br>
+                <tr>
+                  <tr> 
+                    <td>
+                      <label for="" class="form-label">Written_Marks_obtained</label>
+                      <input type="text" class="form-control"  value="00"  aria-label="marks" name="txtwritten_marks">
+                    </td>
+                    <td>
+                      <label for="" class="form-label">Practical_Marks_obtained</label>
+                      <input type="text" class="form-control" value="00"  aria-label="prac" name="txtprac_marks">
+                    </td>
+                    
+                  
+                </tr>
+<tr>
+  <td>
+    <label for="" class="form-label">Viva_Marks_obtained</label>
+    <input type="text" class="form-control"  value="00" aria-label="viva" name="txtviva_marks">
+  </td>
+  <td>
+    <label for="" class="form-label">Assignment_Marks_obtained</label>
+    <input type="text" class="form-control"  aria-label="assignment" value="00" name="txtassignment_marks">
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="" class="form-label">Subject1</label>
+    <input type="text" class="form-control"  value="00"  name="txtmarks_sub1">
+  </td>
+  <td>
+    <label for="" class="form-label">Subject2</label>
+    <input type="text" class="form-control"  value="00"  name="txtmarks_sub2">
+  </td>
+  
+ 
+</tr>
+<tr>
+  <td>
+    <label for="" class="form-label">Subject3</label>
+    <input type="text" class="form-control"  value="00"  name="txtmarks_sub3">
+  </td>
+  <td>
+    <label for="" class="form-label">Subject4</label>
+    <input type="text" class="form-control"  value="00"  name="txtmarks_sub4">
+  </td>
+</tr>
+<tr>
+                    <td rowspan="3">
+              <button type="submit" style="height: 100%;width: 100%;" name="btnregstu" >Submit</button>
+            </td>
+            
+          </div>
+      </div>
+    </form>
+</table>
+</body>
+</html>

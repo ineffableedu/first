@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+{% load static %}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Admin</title>
+    
+<style>
+    
+    table, th, td {
+      border:1px solid black;
+      text-align: center;
+      color: black;
+      background-color: white;
+    }
+
+    </style>
+  </head>
+  <body style="background-color:skyblue;margin:0px auto; color: white;">
+    
+    <center>
+    <table border="" align="center"  width="100%">
+    <h1>Student status</h1>
+    <form action="{% url 'adminstudentsearch' %}" method="post">
+      {% csrf_token %}
+  <h5><input type="text" name="adminsturollno" placeholder="Student RollNo..."><input type="submit" value="Search"></h5>
+  </form>
+    {% if  msg %}
+<h3 align="center">{{msg}}</h3>
+    {% endif %}
+    <tr>
+        <td>Picture</td>
+        <td>Center Id</td>
+        <td>Student RollNo</td>
+        <td>Student Name</td>
+        <td>Center name</td>
+        <td>Action</td>
+        <!-- <td>Center Mobile</td> -->
+    </tr>
+{% for stdstallll in stdstall %}
+    <tr>
+        <td><img src="{{stdstallll.image}}" height="50px" width="50px"></td>
+        <td>{{stdstallll.centeruserid}}</td>
+        <td>{{stdstallll.rollno}}</td>
+        <td>{{stdstallll.student_name}}</td>
+        <td>{{stdstallll.centre_name}}</td>
+        <td>
+            {% if stdstallll.status == "Reject" %}
+            <a href="{% url 'adminstudentactionaccept' id=stdstallll.rollno %}"><input style="background-color: red;color: white;" type="button" value="Accept"></a>
+            <a href="{% url 'adminstudentactionreject' id=stdstallll.rollno %}"><input style="background-color: green;color: white;" type="button" value="Reject"></a></td>
+            {% endif %}
+            {% if stdstallll.status == "Accept" %}
+            <a href="{% url 'adminstudentactionaccept' id=stdstallll.rollno %}"><input style="background-color: green;color: white;" type="button" value="Accept"></a>
+            <a href="{% url 'adminstudentactionreject' id=stdstallll.rollno %}"><input style="background-color: red;color: white;" type="button" value="Reject"></a></td>
+            {% endif %}
+        <!-- <td>{{stdstallll.center_mobile}}</td> -->
+    </tr>
+{% endfor %}
+</table>
+</center>
+  </body>
+</html>

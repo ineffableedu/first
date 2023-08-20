@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+{% load static %}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Admin Dashboard</title>
+  </head>
+  <body style="background-color:skyblue;margin:0px auto; color: white;">
+    {% if  msg %}
+<h3 align="center">{{msg}}</h3>
+    {% endif %}
+    {% for msg in messages %}
+<h3 align="center">{{msg}}</h3>
+                        
+                    {% endfor %} 
+    <center>
+    <table >
+    <h1>Center Dashboard</h1>
+<tr>
+
+    <td ><a href="{% url 'centerstudentregister' %}" style="text-decoration: none;"><p style="height: 20PX; border: 1PX solid;padding:40px;color: black;background-color: white;">REGISTER STUDENT</p></a></td><td></td>
+    <td ><a href="{% url 'centerupdatestudent' %}" style="text-decoration: none;"><p style="height: 20PX; border: 1PX solid;padding:40px;color: black;background-color: white;">MANAGE STUDENT</p></a></td><td></td>
+    <!-- <td ><a href="{% url 'adminlogin' %}"  style="text-decoration: none;"><p style="height: 20PX; border: 1PX solid;padding:40px;color: black;background-color: white;">ADMIN LOGIN</p></a></td><td></td> -->
+</tr>
+</table>
+</center>
+  </body>
+</html>
