@@ -105,14 +105,14 @@
         
         <div id="three" >Course Duration</div>
         <div id="three1" ><b>{{jb.duration}}</b></div>
-        
+        {% for uouy in uouyy %}
         <div id="three" >Training Center Name</div>
-        <div id="three1" ><b>Strugle Computer Institute</b></div>
+        <div id="three1" ><b>{{uouy.center_name}}</b></div>
         
         <div id="three" >Training Center Address</div>
-        <div id="three1" ><b>Laxmanpur Surahi Dist. Ballia, Uttar Pradesh</b></div>
-
-        <div id="three" >
+        <div id="three1" ><b>{{uouy.center_address}}</b></div>
+        {% endfor %}
+         <div id="three" >
           {% if jb.upload_result != Null %}
           <a href="{{jb.upload_result}}">Show Diploma Result</a>
           {% endif %}

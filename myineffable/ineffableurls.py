@@ -33,6 +33,8 @@ urlpatterns=[
     url(r'^notice',views.notice,name='notice'),
     url(r'^contact',views.contact,name='contact'),
     url(r'^course',views.course,name='course'),
+    url(r'^center_student_update/(?P<id>\d+)$',views.center_student_update,name='center_student_update'),
+    url(r'^stuupdatecenter',views.stuupdatecenter,name='stuupdatecenter'),
 
 
 

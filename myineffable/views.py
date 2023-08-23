@@ -373,10 +373,14 @@ def SearchStuRollnoe(request):
     print(searchrollno)
     try:
         jbh=CentreRegisterStudent.objects.filter(rollno=searchrollno)
+        jnj=CentreRegisterStudent.objects.get(rollno=searchrollno)
+        center_detail=jnj.centeruserid
+        uouyy=CentreRegisterAdmin.objects.filter(center_id=center_detail)
+        print("######",uouyy)
         if jbh is not None:
             print(jbh)
             print('1'*8)
-            return render(request,"studentloginpage.html",{'jbh':jbh})
+            return render(request,"studentloginpage.html",{'jbh':jbh,'uouyy':uouyy,})
     except:
         print('2'*8)
         msg="Request not found"
@@ -715,3 +719,77 @@ def downloadresult(request,id):
     return response
     print("222222222222",c)
 
+
+
+def center_student_update(request,id):
+    nknk=CentreRegisterStudent.objects.filter(rollno=id)
+    print(nknk)
+    return render(request,"center_student_update.html",{'nknk':nknk})
+
+
+def stuupdatecenter(request):
+    try:
+        txtphoto1 = request.FILES['txtphotos']
+        print("2222222",txtphoto1)
+        if request.FILES['txtphotos']:
+            txtphoto1 = request.FILES['txtphotos']
+            fs = FileSystemStorage()
+            txtphotoprofile = fs.save(txtphoto1.name,txtphoto1)
+            txtphotoprofile = fs.url(txtphotoprofile)
+
+            txtrollnumber=request.POST['txtrollno']
+            nnkk=CentreRegisterStudent.objects.get(rollno=txtrollnumber)
+            nnkk.student_name=request.POST.get("txtstudentname","N/A")
+            nnkk.mother_name=request.POST.get("txtmothername","N/A")
+            nnkk.father_name=request.POST.get("txtfathername","N/A")
+            nnkk.image=txtphotoprofile
+            nnkk.Dob=request.POST.get("txtdob","N/A")
+            nnkk.course_name=request.POST.get("txtcourse","N/A")
+            nnkk.duration=request.POST.get("txtduration","n/a")
+            nnkk.examheldon=request.POST.get("txtexam","N/A")
+            nnkk.percent=request.POST.get("txtper",0)
+            nnkk.grade=request.POST.get('txtgrade',"N/A")
+            nnkk.session=request.POST.get("txtsession","N/A")
+            nnkk.dateofissue=request.POST.get("txtissue","N/A")
+            nnkk.remark=request.POST.get("txtremark","N/A")
+            nnkk.mark_s1=request.POST.get("txtmarks_sub1",0)
+            nnkk.mark_s2=request.POST.get("txtmarks_sub2",0)
+            nnkk.mark_s3=request.POST.get("txtmarks_sub3",0)
+            nnkk.mark_s4=request.POST.get("txtmarks_sub4",0)
+            nnkk.mark_s5=request.POST.get("txtmarks_sub5",0)
+            nnkk.written_mark=request.POST.get("txtwritten_marks",0)
+            nnkk.practical_mark=request.POST.get("txtprac_marks",0)
+            nnkk.assignment_mark=request.POST.get("txtassignment_marks",0)
+            nnkk.viva_mark=request.POST.get("txtviva_marks",0)
+            nnkk.save()
+            messages.info(request,'Student update succussfully')
+            return redirect('centerdashboard')
+    except:
+        txtrollnumber=request.POST['txtrollno']
+        nnkk=CentreRegisterStudent.objects.get(rollno=txtrollnumber)
+        nnkk.student_name=request.POST.get("txtstudentname","N/A")
+        nnkk.mother_name=request.POST.get("txtmothername","N/A")
+        nnkk.father_name=request.POST.get("txtfathername","N/A")
+        nnkk.Dob=request.POST.get("txtdob","N/A")
+        nnkk.course_name=request.POST.get("txtcourse","N/A")
+        nnkk.duration=request.POST.get("txtduration","n/a")
+        nnkk.examheldon=request.POST.get("txtexam","N/A")
+        nnkk.percent=request.POST.get("txtper",0)
+        nnkk.grade=request.POST.get('txtgrade',"N/A")
+        nnkk.session=request.POST.get("txtsession","N/A")
+        nnkk.dateofissue=request.POST.get("txtissue","N/A")
+        nnkk.remark=request.POST.get("txtremark","N/A")
+        nnkk.mark_s1=request.POST.get("txtmarks_sub1",0)
+        nnkk.mark_s2=request.POST.get("txtmarks_sub2",0)
+        nnkk.mark_s3=request.POST.get("txtmarks_sub3",0)
+        nnkk.mark_s4=request.POST.get("txtmarks_sub4",0)
+        nnkk.mark_s5=request.POST.get("txtmarks_sub5",0)
+        nnkk.written_mark=request.POST.get("txtwritten_marks",0)
+        nnkk.practical_mark=request.POST.get("txtprac_marks",0)
+        nnkk.assignment_mark=request.POST.get("txtassignment_marks",0)
+        nnkk.viva_mark=request.POST.get("txtviva_marks",0)
+        nnkk.save()
+        messages.info(request,'Student update succussfully')
+        return redirect('centerdashboard')       
+    messages.info(request,'Request not found!')
+    return redirect('centerdashboard') 
